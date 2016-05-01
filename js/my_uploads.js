@@ -35,7 +35,7 @@ function getUserActivitiesList() {
     resetVideoHeight();
   });
 
-});
+}
 
 function requestUserUploadsPlaylistId() {
   // See https://developers.google.com/youtube/v3/docs/channels/list
