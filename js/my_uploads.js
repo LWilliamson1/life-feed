@@ -7,11 +7,36 @@ var newSubArr = new Array();
 function tplawesome(e,t){res=e;for(var n=0;n<t.length;n++){res=res.replace(/\{\{(.*?)\}\}/g,function(e,r){return t[n][r]})}return res}
 
 function handleAPILoaded() {
-  requestUserUploadsPlaylistId();
+  //requestUserUploadsPlaylistId();
+  getUserActivitiesList();
 }
 
 // Call the Data API to retrieve the playlist ID that uniquely identifies the
 // list of videos uploaded to the currently authenticated user's channel.
+
+function getUserActivitiesList() {
+    var request = gapi.client.youtube.activities.list({
+    maxResults: 10,
+    part: 'snippet',
+    home: true
+  });
+
+  request.execute(function(response) {
+    var results = response.result;
+    console.log(results);
+    $("#results").html("");
+    $.each(results.items, function(index, item) {
+      if(item.contentDetails.upload){
+        $.get("../tpl/item.html", function(data) {
+          $("#results").append(tplawesome(data, [{"title":"title", "videoid":item.contentDetails.upload.videoId}]));
+        });
+      }
+    });
+    resetVideoHeight();
+  });
+
+});
+
 function requestUserUploadsPlaylistId() {
   // See https://developers.google.com/youtube/v3/docs/channels/list
 	var request = gapi.client.youtube.activities.list({

@@ -9,3 +9,11 @@ form, #results { padding: 0 20px; }
 
 .btn-primary { background: #952b2b; border-color: #957575; }
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus { background: #782b2b;  border-color: #952b2b; }
+
+.paging-button {
+  visibility: hidden;
+}
+
+.button-container {
+  clear: both;
+}
