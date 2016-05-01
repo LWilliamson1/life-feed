@@ -17,7 +17,7 @@ function handleAPILoaded() {
 function getUserActivitiesList() {
     var request = gapi.client.youtube.activities.list({
     maxResults: 10,
-    part: 'snippet',
+    part: 'contentDetails',
     home: true
   });
 
@@ -27,7 +27,7 @@ function getUserActivitiesList() {
     $("#results").html("");
     $.each(results.items, function(index, item) {
       if(item.contentDetails.upload){
-        $.get("../tpl/item.html", function(data) {
+        $.get("tpl/item.html", function(data) {
           $("#results").append(tplawesome(data, [{"title":"title", "videoid":item.contentDetails.upload.videoId}]));
         });
       }
