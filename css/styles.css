@@ -16,4 +16,22 @@ form, #results { padding: 0 20px; }
 
 .button-container {
   clear: both;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
 }*/
+
+/*.theater {
+  -webkit-transform: scale(1.5,1.5);
+  left: 400px;
+  top: 100px;
+  border-right: 100% solid black;
+  border-left: 100% solid black;
+  margin: auto;
+}
+.theater-toggle {
+  margin: auto;
+}*/
+

@@ -27,9 +27,9 @@
         }
         Twitch.api({method: 'streams/followed'}, function(error, user){
           console.log(user);
-          $("#results").append("<div>");
+          //$("#results").append("<div>");
           $.each(user.streams, function(index, item) {
-            $("#results").append('<img height="360" width="640" style="margin: 2px" src="'+item.preview.large+'"></img>');
+            $("#twitch").append('<img height="360" width="640" style="margin: 2px" src="'+item.preview.large+'"></img>');
               <!--'<iframe src="http://player.twitch.tv/?autoplay=false&channel='+item.channel.name+'" height="720" width="1280" frameborder="0"  scrolling="no" allowfullscreen="true" autoplay="false"></iframe>'-->
 
           });
@@ -129,7 +129,14 @@
                     <p><input type="submit" value="Search" class="form-control btn btn-primary w100"></p>
                 </form>
 		-->
-                <div id="results" style="display: inline-block"></div>
+		<div>
+		<img src="http://s.jtvnw.net/jtv_user_pictures/hosted_images/Twitch_BlackLogo.png" alt="Twitch Logo" style="height:5em;"</img>
+</div>
+		<div id="twitch" style="display : inline-block"></div>
+	<div>
+	<img src="img/YouTube-logo-full_color.png" alt="YouTube Logo" style="height:10em;"></img>
+	</div>	
+	<div id="yt" style="display: inline-block"></div>
             </div>
         </div> 
 

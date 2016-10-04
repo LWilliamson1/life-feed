@@ -10,7 +10,13 @@ function handleAPILoaded() {
   //requestUserUploadsPlaylistId();
   getUserActivitiesList();
 }
-
+/*
+$("#videoContainer").on('click', function(e){
+	console.log("Saw click");
+	$(".theater").removeClass("theater");
+	$(this).addClass("theater");
+});
+*/
 // Call the Data API to retrieve the playlist ID that uniquely identifies the
 // list of videos uploaded to the currently authenticated user's channel.
 
@@ -24,11 +30,11 @@ function getUserActivitiesList() {
   request.execute(function(response) {
     var results = response.result;
     console.log(results);
-    $("#results").html("");
+   // $("#yt").html("");
     $.each(results.items, function(index, item) {
       if(item.contentDetails.upload){
-        $.get("tpl/item.html", function(data) {
-          $("#results").append(tplawesome(data, [{"title":"title", "videoid":item.contentDetails.upload.videoId}]));
+        $.get("/viralvideos/tpl/item.html", function(data) {
+          $("#yt").append(tplawesome(data, [{"title":"title", "videoid":item.contentDetails.upload.videoId}]));
         });
       }
     });
@@ -63,7 +69,7 @@ function requestUserUploadsPlaylistId() {
           $("#results").html("");
           $.each(results.items, function(index, item) {
 		if(item.contentDetails.upload){
-            $.get("../tpl/item.html", function(data) {
+            $.get("tpl/item.html", function(data) {
                 $("#results").append(tplawesome(data, [{"title":"title", "videoid":item.contentDetails.upload.videoId}]));
             });
 	}
